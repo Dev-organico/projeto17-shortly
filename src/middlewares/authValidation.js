@@ -1,4 +1,4 @@
-import db from "../config/database.js"
+import {db} from "../config/database.js"
 
 export async function authValidation(req, res, next) {
 
@@ -9,7 +9,7 @@ export async function authValidation(req, res, next) {
   if (!token) return res.sendStatus(422)
 
   try {
-    const checkSession = await db.query()
+    const checkSession = await db.query(``)
 
     if (!checkSession) return res.sendStatus(401)
 

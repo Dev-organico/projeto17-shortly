@@ -28,7 +28,7 @@ CREATE TABLE public.sessions (
     id integer NOT NULL,
     user_id integer NOT NULL,
     token text NOT NULL,
-    "createAt" timestamp without time zone DEFAULT now()
+    "createdAt" timestamp without time zone DEFAULT now()
 );
 
 
@@ -61,7 +61,7 @@ CREATE TABLE public.users (
     name text NOT NULL,
     email text NOT NULL,
     password text NOT NULL,
-    "createAt" timestamp without time zone DEFAULT now()
+    "createdAt" timestamp without time zone DEFAULT now()
 );
 
 

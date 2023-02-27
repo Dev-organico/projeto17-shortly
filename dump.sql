@@ -27,7 +27,7 @@ SET default_table_access_method = heap;
 CREATE TABLE public.sessions (
     id integer NOT NULL,
     user_id integer NOT NULL,
-    token text NOT NULL,
+    token character varying NOT NULL,
     "createdAt" timestamp without time zone DEFAULT now()
 );
 
@@ -58,9 +58,9 @@ ALTER SEQUENCE public.sessions_id_seq OWNED BY public.sessions.id;
 
 CREATE TABLE public.users (
     id integer NOT NULL,
-    name text NOT NULL,
-    email text NOT NULL,
-    password text NOT NULL,
+    name character varying NOT NULL,
+    email character varying NOT NULL,
+    password character varying NOT NULL,
     "createdAt" timestamp without time zone DEFAULT now()
 );
 
@@ -103,26 +103,28 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.sessions VALUES (1, 1, '4885b03e-a667-426d-91f0-76a8fe99f5d4', '2023-02-27 20:45:12.606784');
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.users VALUES (1, 'João', 'joao@driven.com', '$2b$10$NHrjiJB3SQ3RZVeN2iei9ObYCSMVIwoNT3KwP6P8B4xrw2BrQK04S', '2023-02-27 20:44:25.823466');
 
 
 --
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 1, false);
+SELECT pg_catalog.setval('public.sessions_id_seq', 1, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+SELECT pg_catalog.setval('public.users_id_seq', 1, true);
 
 
 --

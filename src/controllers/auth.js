@@ -14,11 +14,9 @@ export async function signUp(req, res) {
 
         const isIncluded = await db.query(`SELECT * FROM users WHERE email = $1`,[email])
 
-        console.log(isIncluded.rows)
-
         if (isIncluded.rows.length > 0) return res.status(409).send("Esse e-mail já está cadastrado.")
 
-        await db.query(`INSERT INTO users (name,email,password) VALUES ($1,$2,$2)`,[name,email,passwordHashed])
+        await db.query(`INSERT INTO users (name,email,password) VALUES ($1,$2,$3)`,[name,email,passwordHashed])
 
         res.status(201).send("Usuário cadastrado com sucesso!")
 

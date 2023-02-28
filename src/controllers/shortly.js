@@ -28,7 +28,33 @@ export async function shorten(req, res) {
 
         return res.status(201).send(urlObj)
         
-    } catch (err) {
-        res.status(500).send(err.message)
+    } catch (error) {
+        res.status(500).send(error.message)
+    }
+}
+
+export async function getUrl(req,res){
+
+    const {id} = req.params
+
+    try {
+
+        let findUrl = await db.query(`SELECT * FROM urls WHERE id = $1`,[id])
+
+        if(findUrl.rows.length === 0) return res.sendStatus(404)
+
+        findUrl = findUrl.rows[0]
+
+        const urlObj = {
+            id:findUrl.id,
+            shortUrl:findUrl.short_url,
+            url:findUrl.url
+        }
+
+        res.status(200).send(urlObj)
+        
+    } catch (error) {
+
+        res.status(500).send(error.message)
     }
 }

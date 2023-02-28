@@ -9,11 +9,11 @@ export async function authValidation(req, res, next) {
   if (!token) return res.sendStatus(422)
 
   try {
-    const checkSession = await db.query(``)
+    let checkSession = await db.query(`SELECT * FROM sessions WHERE token = $1`,[token])
 
-    if (!checkSession) return res.sendStatus(401)
+    if (checkSession.rows.length === 0) return res.sendStatus(401)
 
-    res.locals.session = checkSession
+    res.locals.session = checkSession.rows[0].token
 
     next()
 

@@ -15,9 +15,9 @@ export async function shorten(req, res) {
 
         const userId = findId.rows[0].user_id
 
-        await db.query(`INSERT INTO urls (user_id,url,short_url) VALUES ($1,$2,$3) `,[userId,url,shortUrl])
+        await db.query(`INSERT INTO urls (user_id,url,"shortUrl") VALUES ($1,$2,$3) `,[userId,url,shortUrl])
 
-        let urlId = await db.query(`SELECT * FROM urls WHERE shortUrl = $1`,[shortUrl])
+        let urlId = await db.query(`SELECT * FROM urls WHERE "shortUrl" = $1`,[shortUrl])
 
         urlId = urlId.rows[0].id
 
@@ -65,7 +65,7 @@ export async function openShortUrl(req,res){
 
     try {
 
-        let findShortUrl = await db.query(`SELECT * FROM urls WHERE shortUrl = $1`,[shortUrl])
+        let findShortUrl = await db.query(`SELECT * FROM urls WHERE "shortUrl" = $1`,[shortUrl])
 
         if(findShortUrl.rows.length === 0) return res.sendStatus(404)
 
@@ -75,7 +75,7 @@ export async function openShortUrl(req,res){
 
         visitsCount = visitsCount + 1
 
-        await db.query(`UPDATE urls SET visitsCount = $1 WHERE shortUrl = $2`,[visitsCount,shortUrl])
+        await db.query(`UPDATE urls SET "visitsCount" = $1 WHERE "shortUrl" = $2`,[visitsCount,shortUrl])
 
         res.redirect(`${findShortUrl.url}`)
 

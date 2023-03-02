@@ -153,6 +153,7 @@ INSERT INTO public.sessions VALUES (3, 1, '40ed9cf7-f464-4321-b964-d2db0927ff0b'
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.urls VALUES (1, 1, 'https://www.youtube.com.br', 'HDlEP_Dp7oLXHKjqr3YYa', 0, '2023-03-01 22:49:27.50919');
 
 
 --
@@ -173,7 +174,7 @@ SELECT pg_catalog.setval('public.sessions_id_seq', 3, true);
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
+SELECT pg_catalog.setval('public.urls_id_seq', 1, true);
 
 
 --

@@ -120,11 +120,37 @@ export async function getUser(req,res){
 
     try {
 
+        const getIdFromToken = await db.query(`SELECT * FROM sessions WHERE token = $1`,[token])
+
+        const userId = getIdFromToken.rows[0].user_id
+
+        const myData = await db.query(`
+        SELECT users.id , users.name ,
+        SUM(urls."visitCount") AS "visitCount",
+        json_agg(json_build_object('id', urls.id, 'shortUrl', urls."shortUrl", 'url', urls.url, 'visitCount', urls."visitCount")) AS "shortenedUrls" 
+        FROM users
+        JOIN urls
+            ON users.id = urls.user_id
+        WHERE urls.user_id = $1 and users.id = $2
+        GROUP BY users.id
+        ;
+        `,[userId,userId])
+
+        res.send(myData.rows)
+
         
     } catch (error) {
 
         res.status(500).send(error.message)
 
+    }
+}
+
+export async function getRanking(req,res){
+    try {
+        
+    } catch (error) {
+        res.status(500).send(error.message)
     }
 }
 

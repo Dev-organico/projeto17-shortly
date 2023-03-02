@@ -17,7 +17,7 @@ export async function shorten(req, res) {
 
         await db.query(`INSERT INTO urls (user_id,url,short_url) VALUES ($1,$2,$3) `,[userId,url,shortUrl])
 
-        let urlId = await db.query(`SELECT * FROM urls WHERE short_url = $1`,[shortUrl])
+        let urlId = await db.query(`SELECT * FROM urls WHERE shortUrl = $1`,[shortUrl])
 
         urlId = urlId.rows[0].id
 
@@ -47,7 +47,7 @@ export async function getUrl(req,res){
 
         const urlObj = {
             id:findUrl.id,
-            shortUrl:findUrl.short_url,
+            shortUrl:findUrl.shortUrl,
             url:findUrl.url
         }
 
@@ -65,17 +65,17 @@ export async function openShortUrl(req,res){
 
     try {
 
-        let findShortUrl = await db.query(`SELECT * FROM urls WHERE short_url = $1`,[shortUrl])
+        let findShortUrl = await db.query(`SELECT * FROM urls WHERE shortUrl = $1`,[shortUrl])
 
         if(findShortUrl.rows.length === 0) return res.sendStatus(404)
 
         findShortUrl = findShortUrl.rows[0]
 
-        let visitsCount = findShortUrl.visits_count
+        let visitsCount = findShortUrl.visitsCount
 
         visitsCount = visitsCount + 1
 
-        await db.query(`UPDATE urls SET visits_count = $1 WHERE short_url = $2`,[visitsCount,shortUrl])
+        await db.query(`UPDATE urls SET visitsCount = $1 WHERE shortUrl = $2`,[visitsCount,shortUrl])
 
         res.redirect(`${findShortUrl.url}`)
 
@@ -113,3 +113,18 @@ export async function deleteShortUrl(req,res){
 
     }
 }
+
+export async function getUser(req,res){
+
+    const token = res.locals.session
+
+    try {
+
+        
+    } catch (error) {
+
+        res.status(500).send(error.message)
+
+    }
+}
+

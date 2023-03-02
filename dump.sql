@@ -60,8 +60,8 @@ CREATE TABLE public.urls (
     id integer NOT NULL,
     user_id integer NOT NULL,
     url text NOT NULL,
-    short_url text NOT NULL,
-    visits_count integer DEFAULT 0,
+    "shortUrl" text NOT NULL,
+    "visitsCount" integer DEFAULT 0,
     "createdAt" timestamp without time zone DEFAULT now()
 );
 
@@ -153,7 +153,6 @@ INSERT INTO public.sessions VALUES (3, 1, '40ed9cf7-f464-4321-b964-d2db0927ff0b'
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.urls VALUES (2, 1, 'https://www.youtube.com/', 'u7mwoW_NEAhAy8CxSs7GX', 1, '2023-03-01 21:05:10.939799');
 
 
 --
@@ -174,7 +173,7 @@ SELECT pg_catalog.setval('public.sessions_id_seq', 3, true);
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 2, true);
+SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
 
 
 --

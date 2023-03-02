@@ -136,7 +136,7 @@ export async function getUser(req,res){
         ;
         `,[userId,userId])
 
-        res.send(myData.rows)
+        return res.status(200).send(myData.rows[0])
 
         
     } catch (error) {

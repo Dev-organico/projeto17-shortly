@@ -65,8 +65,6 @@ export async function openShortUrl(req,res){
 
     try {
 
-        console.log(String(shortUrl))
-
         let findShortUrl = await db.query(`SELECT * FROM urls WHERE short_url = $1`,[shortUrl])
 
         if(findShortUrl.rows.length === 0) return res.sendStatus(404)
@@ -81,6 +79,33 @@ export async function openShortUrl(req,res){
 
         res.redirect(`${findShortUrl.url}`)
 
+        
+    } catch (error) {
+
+        res.status(500).send(error.message)
+
+    }
+}
+
+export async function deleteShortUrl(req,res){
+
+    const {id} = req.params
+
+    const token = res.locals.session
+
+    try {
+
+        const userIdFromToken = await db.query(`SELECT * FROM sessions WHERE token = $1`,[token])
+
+        const userIdFromUrl = await db.query(`SELECT * FROM urls WHERE id = $1`,[id])
+
+        if(userIdFromUrl.rows.length === 0) return res.sendStatus(404)
+
+        if(userIdFromToken.rows[0].user_id !== userIdFromUrl.rows[0].user_id) return res.sendStatus(401)
+
+        await db.query(`DELETE FROM urls WHERE id = $1`,[id])
+
+        res.sendStatus(204)
         
     } catch (error) {
 

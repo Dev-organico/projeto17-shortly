@@ -59,9 +59,9 @@ ALTER SEQUENCE public.sessions_id_seq OWNED BY public.sessions.id;
 CREATE TABLE public.urls (
     id integer NOT NULL,
     user_id integer NOT NULL,
-    url character varying NOT NULL,
-    short_url character varying NOT NULL,
-    links_count integer DEFAULT 0,
+    url text NOT NULL,
+    short_url text NOT NULL,
+    visits_count integer DEFAULT 0,
     "createdAt" timestamp without time zone DEFAULT now()
 );
 
@@ -153,8 +153,7 @@ INSERT INTO public.sessions VALUES (3, 1, '40ed9cf7-f464-4321-b964-d2db0927ff0b'
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.urls VALUES (1, 1, 'https://...', 'jOoXV11k13LloZQp3XAg1', 0, '2023-02-27 22:22:08.44071');
-INSERT INTO public.urls VALUES (2, 1, 'https://...', 'ik4_crWtGsOvlIMDjEL1X', 0, '2023-02-27 22:46:02.29301');
+INSERT INTO public.urls VALUES (1, 1, 'https://hfhfhfhfhfhfhhfhf', 'C0Fe6IAE8XgVtcUeWL5M1', 8, '2023-03-01 20:37:20.878027');
 
 
 --
@@ -175,7 +174,7 @@ SELECT pg_catalog.setval('public.sessions_id_seq', 3, true);
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 2, true);
+SELECT pg_catalog.setval('public.urls_id_seq', 1, true);
 
 
 --

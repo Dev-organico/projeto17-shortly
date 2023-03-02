@@ -58,3 +58,33 @@ export async function getUrl(req,res){
         res.status(500).send(error.message)
     }
 }
+
+export async function openShortUrl(req,res){
+
+    const {shortUrl} = req.params
+
+    try {
+
+        console.log(String(shortUrl))
+
+        let findShortUrl = await db.query(`SELECT * FROM urls WHERE short_url = $1`,[shortUrl])
+
+        if(findShortUrl.rows.length === 0) return res.sendStatus(404)
+
+        findShortUrl = findShortUrl.rows[0]
+
+        let visitsCount = findShortUrl.visits_count
+
+        visitsCount = visitsCount + 1
+
+        await db.query(`UPDATE urls SET visits_count = $1 WHERE short_url = $2`,[visitsCount,shortUrl])
+
+        res.redirect(`${findShortUrl.url}`)
+
+        
+    } catch (error) {
+
+        res.status(500).send(error.message)
+
+    }
+}

@@ -71,9 +71,9 @@ export async function openShortUrl(req,res){
 
         findShortUrl = findShortUrl.rows[0]
 
-        let visitsCount = findShortUrl.visitsCount
+        let visitCount = findShortUrl.visitCount
 
-        visitsCount = visitsCount + 1
+        visitCount = visitCount + 1
 
         await db.query(`UPDATE urls SET "visitCount" = $1 WHERE "shortUrl" = $2`,[visitsCount,shortUrl])
 
@@ -147,8 +147,11 @@ export async function getUser(req,res){
 }
 
 export async function getRanking(req,res){
+
     try {
         
+        const showRanking = await db.query(``)
+
     } catch (error) {
         res.status(500).send(error.message)
     }

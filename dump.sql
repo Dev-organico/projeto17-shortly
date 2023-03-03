@@ -147,6 +147,7 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 INSERT INTO public.sessions VALUES (1, 1, '4885b03e-a667-426d-91f0-76a8fe99f5d4', '2023-02-27 20:45:12.606784');
 INSERT INTO public.sessions VALUES (2, 1, 'b82468f2-a8d8-4a2f-8644-da9b5efa4ec2', '2023-02-27 22:20:39.163793');
 INSERT INTO public.sessions VALUES (3, 1, '40ed9cf7-f464-4321-b964-d2db0927ff0b', '2023-02-27 22:22:06.028666');
+INSERT INTO public.sessions VALUES (4, 2, 'e02e0a68-926b-4c65-968d-6d3c72205b20', '2023-03-02 22:28:45.42306');
 
 
 --
@@ -156,6 +157,8 @@ INSERT INTO public.sessions VALUES (3, 1, '40ed9cf7-f464-4321-b964-d2db0927ff0b'
 INSERT INTO public.urls VALUES (2, 1, 'https://www.youtubiolison.com.br', 'Gm9EXL6miHIq4EHA0rZBa', 0, '2023-03-02 19:48:50.190438');
 INSERT INTO public.urls VALUES (3, 1, 'https://www.iolison.com.br', 'FwHDQZcQVTuqwQHfnPKoG', 0, '2023-03-02 19:48:55.842269');
 INSERT INTO public.urls VALUES (1, 1, 'https://www.youtubiuu.com.br', '-IgM_4cy_EF5woacvuRHC', 1, '2023-03-02 19:48:44.433073');
+INSERT INTO public.urls VALUES (4, 2, 'https://www.iolison222.com.br', '3uJhwYYo3Vf1QLej42hTC', 0, '2023-03-02 22:29:04.224782');
+INSERT INTO public.urls VALUES (5, 2, 'https://www.iolison22222222.com.br', '_ILy665w8sT-2RoLaGVvi', 0, '2023-03-02 22:29:06.980868');
 
 
 --
@@ -170,14 +173,14 @@ INSERT INTO public.users VALUES (2, 'João2', 'joao2@driven.com.br', '$2b$10$Agf
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 3, true);
+SELECT pg_catalog.setval('public.sessions_id_seq', 4, true);
 
 
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 3, true);
+SELECT pg_catalog.setval('public.urls_id_seq', 5, true);
 
 
 --

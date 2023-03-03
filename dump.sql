@@ -153,9 +153,9 @@ INSERT INTO public.sessions VALUES (3, 1, '40ed9cf7-f464-4321-b964-d2db0927ff0b'
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.urls VALUES (1, 1, 'https://www.youtubiuu.com.br', '-IgM_4cy_EF5woacvuRHC', 0, '2023-03-02 19:48:44.433073');
 INSERT INTO public.urls VALUES (2, 1, 'https://www.youtubiolison.com.br', 'Gm9EXL6miHIq4EHA0rZBa', 0, '2023-03-02 19:48:50.190438');
 INSERT INTO public.urls VALUES (3, 1, 'https://www.iolison.com.br', 'FwHDQZcQVTuqwQHfnPKoG', 0, '2023-03-02 19:48:55.842269');
+INSERT INTO public.urls VALUES (1, 1, 'https://www.youtubiuu.com.br', '-IgM_4cy_EF5woacvuRHC', 1, '2023-03-02 19:48:44.433073');
 
 
 --

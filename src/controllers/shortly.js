@@ -75,7 +75,7 @@ export async function openShortUrl(req,res){
 
         visitsCount = visitsCount + 1
 
-        await db.query(`UPDATE urls SET "visitsCount" = $1 WHERE "shortUrl" = $2`,[visitsCount,shortUrl])
+        await db.query(`UPDATE urls SET "visitCount" = $1 WHERE "shortUrl" = $2`,[visitsCount,shortUrl])
 
         res.redirect(`${findShortUrl.url}`)
 

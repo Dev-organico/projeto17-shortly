@@ -163,6 +163,7 @@ INSERT INTO public.urls VALUES (1, 1, 'https://www.youtubiuu.com.br', '-IgM_4cy_
 --
 
 INSERT INTO public.users VALUES (1, 'João', 'joao@driven.com', '$2b$10$NHrjiJB3SQ3RZVeN2iei9ObYCSMVIwoNT3KwP6P8B4xrw2BrQK04S', '2023-02-27 20:44:25.823466');
+INSERT INTO public.users VALUES (2, 'João2', 'joao2@driven.com.br', '$2b$10$Agf/aierJiFiBUu9LI8KcuEd2OH7pZmfJXMrOjIk/HHwPUsXTjDOK', '2023-03-02 21:50:57.41891');
 
 
 --
@@ -183,7 +184,7 @@ SELECT pg_catalog.setval('public.urls_id_seq', 3, true);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_id_seq', 2, true);
 
 
 --

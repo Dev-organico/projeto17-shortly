@@ -150,7 +150,20 @@ export async function getRanking(req,res){
 
     try {
         
-        const showRanking = await db.query(``)
+        const showRanking = await db.query(`
+        SELECT
+        users.id,users.name,
+        COUNT(urls) AS "linksCount",
+        SUM(urls."visitCount") AS "visitCount"
+        FROM users
+        LEFT JOIN urls
+         ON users.id = urls.user_id
+        GROUP BY users.id
+        ORDER BY "visitCount" ASC
+        LIMIT 10
+        ;`)
+
+        return res.status(200).send(showRanking.rows)
 
     } catch (error) {
         res.status(500).send(error.message)
